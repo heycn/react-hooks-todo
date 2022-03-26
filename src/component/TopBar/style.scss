@@ -1,0 +1,26 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: .44rem;
+  background-color: #06f;
+
+  h1 {
+    text-align: center;
+    line-height: .44rem;
+    font-size: .18rem;
+    color: #fff;
+  }
+
+  .add-icon {
+    position: absolute;
+    text-align: center;
+    line-height: .44rem;
+    top: 0;
+    right: 0;
+    color: #fff;
+    height: 100%;
+    min-width: .44rem;
+  }
+}
