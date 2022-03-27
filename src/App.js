@@ -26,12 +26,7 @@ const App = () => {
       <AddTodo addTodoVisible={addTodoVisible} addListItem={addListItem} />
       <ul className='todo-list'>
         {todoList.map((item, index) => {
-          return (
-            <TodoItem
-              data={item}
-              key={index} 
-            />
-          )
+          return <TodoItem data={item} key={index} />
         })}
       </ul>
     </div>
