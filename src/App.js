@@ -1,6 +1,8 @@
 import React, { useCallback, useState } from 'react'
+import './App.css'
 import TopBar from './component/TopBar/TopBar'
 import AddTodo from './component/AddTodo/AddTodo'
+import TodoItem from './component/TodoItem/TodoItem'
 
 const App = () => {
   const [addTodoVisible, setAddTodoVisible] = useState(false)
@@ -22,6 +24,16 @@ const App = () => {
     <div className='App'>
       <TopBar addTodoSwitch={addTodoSwitch} />
       <AddTodo addTodoVisible={addTodoVisible} addListItem={addListItem} />
+      <ul className='todo-list'>
+        {todoList.map((item, index) => {
+          return (
+            <TodoItem
+              data={item}
+              key={index} 
+            />
+          )
+        })}
+      </ul>
     </div>
   )
 }
