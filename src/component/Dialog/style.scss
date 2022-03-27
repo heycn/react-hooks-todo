@@ -1,4 +1,4 @@
-.modal {
+.dialog-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,11 +10,11 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, .5);
 
-  .inner {
+  .dialog {
     width: 2.5rem;
     background-color: #fff;
 
-    .m-header {
+    .dialog-header {
       height: .38rem;
       background-color: #337ab7;
       color: #fff;
