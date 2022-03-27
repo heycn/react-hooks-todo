@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import './App.css'
 import TopBar from './component/TopBar/TopBar'
 import AddTodo from './component/AddTodo/AddTodo'
@@ -7,6 +7,15 @@ import TodoItem from './component/TodoItem/TodoItem'
 const App = () => {
   const [addTodoVisible, setAddTodoVisible] = useState(false)
   const [todoList, setTodoList] = useState([])
+
+  useEffect(() => {
+    const todoData = JSON.parse(localStorage.getItem('todoData') || '[]')
+    setTodoList(todoData)
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem('todoData', JSON.stringify(todoList))
+  }, [todoList])
 
   const addTodoSwitch = () => setAddTodoVisible(!addTodoVisible)
   const addListItem = useCallback(value => {
