@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.scss'
-import Dialog from '../Dialog'
+import Dialog from '../Dialog.js'
 
 const CheckDialog = props => {
   const { checkDialogVisible, data, closeDialog } = props

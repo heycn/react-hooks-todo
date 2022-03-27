@@ -13,14 +13,17 @@
   .dialog {
     width: 2.5rem;
     background-color: #fff;
+    border-radius: 12px;
 
     .dialog-header {
       height: .38rem;
-      background-color: #337ab7;
-      color: #fff;
+      width: 100%;
+      border-bottom: 1px solid #ddd;
+      color: #17233d;
       text-align: center;
       line-height: .38rem;
       font-size: .16rem;
+      border-radius: 12px 12px 0 0;
     }
 
     .content-wrapper {
