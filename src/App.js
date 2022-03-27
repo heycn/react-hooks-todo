@@ -4,13 +4,14 @@ import TopBar from './component/TopBar/TopBar'
 import AddTodo from './component/AddTodo/AddTodo'
 import TodoItem from './component/TodoItem/TodoItem'
 import CheckDialog from './component/Dialog/CheckDialog/CheckDialog'
+import EditDialog from './component/Dialog/EditDialog/EditDialog'
 
 const App = () => {
   const [addTodoVisible, setAddTodoVisible] = useState(false),
         [checkDialogVisible, setCheckDialogVisible] = useState(false),
+        [editDialogVisible, setEditDialogVisible] = useState(true),
         [todoList, setTodoList] = useState([]),
         [currentData, setCurrentData] = useState({})
-
   useEffect(() => {
     const todoData = JSON.parse(localStorage.getItem('todoData') || '[]')
     setTodoList(todoData)
@@ -35,9 +36,18 @@ const App = () => {
   const closeDialog = () => setCheckDialogVisible(false)
 
   const showCheckDialog = useCallback(id => {
-    setCurrentData(() => todoList.filter(item => item.id === id)[0])
+    _setCurrentData(todoList, id)
     setCheckDialogVisible(true)
   }, [todoList])
+
+  const showEditDialog = useCallback(id => {
+    _setCurrentData(todoList, id)
+    setCheckDialogVisible(true)
+  }, [todoList])
+
+  const _setCurrentData = (todoList, id)=> {
+    setCurrentData(() => todoList.filter(item => item.id === id)[0])
+  }
 
   return (
     <div className='App'>
@@ -46,6 +56,9 @@ const App = () => {
         data={currentData}
         closeDialog={closeDialog}
       />
+      <EditDialog>
+        editDialogVisible={editDialogVisible}
+      </EditDialog>
       <TopBar addTodoSwitch={addTodoSwitch} />
       <AddTodo addTodoVisible={addTodoVisible} addListItem={addListItem} />
       <ul className='todo-list'>
@@ -56,6 +69,7 @@ const App = () => {
                 data={item}
                 key={index}
                 showCheckDialog={showCheckDialog}
+                showEditDialog={showEditDialog}
               />
             )
           })
