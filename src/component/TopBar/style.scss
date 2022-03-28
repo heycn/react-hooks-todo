@@ -6,6 +6,21 @@
   min-height: .44rem;
   background: #ededed;
 
+  .icon {
+    position: absolute;
+    text-align: center;
+    line-height: .44rem;
+    top: 0;
+    left: 0;
+    color: #17233d;
+    height: 100%;
+    line-height: .44rem;
+    padding: 6px 0;
+    width: .28rem;
+    height: .28rem;
+    padding-left: .18rem;
+  }
+
   h1 {
     text-align: center;
     line-height: .44rem;
@@ -20,7 +35,8 @@
     top: 0;
     right: 0;
     color: #17233d;
-    height: 100%;
-    min-width: .44rem;
+    width: .44rem;
+    padding-right: .1rem;
+    // border: 1px solid red;
   }
 }
