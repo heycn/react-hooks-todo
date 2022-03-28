@@ -6,14 +6,17 @@ const Dialog = props => {
 
   return (
     <>
-      { dialogVisible 
-        ? ( <div className='dialog-wrapper'>
-            <div className='dialog'>
-              <div className='dialog-header'>{dialogTitle}</div>
-              <div className='content-wrapper'>{dialogContent}</div>
-            </div>
-          </div>)
-        : ''
+      {
+        dialogVisible 
+          ? (
+              <div className='dialog-wrapper'>
+                <div className='dialog'>
+                  <div className='dialog-header'>{dialogTitle}</div>
+                  <div className='content-wrapper'>{dialogContent}</div>
+                </div>
+              </div>
+            )
+          : ( '' )
       }
     </>
   )
