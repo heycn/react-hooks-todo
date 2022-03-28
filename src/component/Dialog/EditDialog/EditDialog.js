@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import './style.scss'
 import Dialog from '../Dialog'
+import { formatDateTime } from '../../../lib/utils'
 
 const EditDialog = props => {
   const { editDialogVisible, data, submitEdit } = props,
@@ -27,7 +28,7 @@ const EditDialog = props => {
 
   return (
     <Dialog dialogVisible={editDialogVisible} dialogTitle='编辑待办' >
-      <p className='dialog-content'>时间：{data.id}</p>
+      <p className='dialog-content'>时间：{formatDateTime(data.id)}</p>
       <p className='dialog-content'>
         <textarea
           className='text-area'
