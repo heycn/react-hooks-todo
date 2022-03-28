@@ -45,7 +45,7 @@ const App = () => {
 
   const showEditDialog = useCallback(id => {
     _setCurrentData(todoList, id)
-    setCheckDialogVisible(true)
+    setEditDialogVisible(true)
   }, [todoList])
 
   return (
@@ -55,9 +55,10 @@ const App = () => {
         data={currentData}
         closeDialog={() => setCheckDialogVisible(false)}
       />
-      <EditDialog>
+      <EditDialog
         editDialogVisible={editDialogVisible}
-      </EditDialog>
+        data={currentData}
+      />
       <TopBar addTodoSwitch={addTodoSwitch} />
       <AddTodo addTodoVisible={addTodoVisible} addListItem={addListItem} />
       <ul className='todo-list'>

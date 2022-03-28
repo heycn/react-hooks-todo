@@ -8,24 +8,28 @@ const EditDialog = props => {
         checkRef = useRef()
 
   const submitNewData = () => {
-    const value = inputRef.current.value.trim(),
-          valueLength = value.valueLength,
-          newData = {
-            id: new Date().getTime(),
-            content: value,
-            completed: checkRef.current.checked
-          }
+    const newValue = inputRef.current.value.trim(),
+          newValueLength = newValue.valueLength
     
-    if (valueLength === 0) {
+    if (newValueLength === 0) {
       inputRef.current.value = data.content
       return
+    }
+
+    const newData = {
+      id: new Date().getTime(),
+      content: newValue ,
+      completed: checkRef.current.checked
     }
 
     submitEdit(newData, data.id)
   }
 
   return (
-    <Dialog dialogVisible={editDialogVisible} dialogTitle='编辑待办'>
+    <Dialog
+      dialogVisible={editDialogVisible}
+      dialogTitle='编辑待办'
+    >
       <p className='dialog-content'>时间：{data.id}</p>
       <p className='dialog-content'>
         <textarea
@@ -43,8 +47,8 @@ const EditDialog = props => {
         />
       </p>
       <button
-      className='button button-primary confirm-button'
-      onClick={submitNewData}
+        className='button button-primary confirm-button'
+        onClick={submitNewData}
       >
         完成
       </button>
