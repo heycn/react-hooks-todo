@@ -34,13 +34,17 @@ const App = () => {
     setAddTodoVisible(false)
   }, [])
 
-  const changeCompletedItem = useCallback(id => {
+  const changeCompletedState = useCallback(id => {
     setTodoList(todoList => todoList.map(item => {
       if (item.id === id) {
         item.completed = !item.completed
       }
       return item
     }))
+  }, [])
+
+  const removeTodoItem = useCallback(id => {
+    setTodoList(todoList => todoList.filter(item => item.id !== id))
   }, [])
 
   const _setCurrentData = (todoList, id) => {
@@ -92,7 +96,8 @@ const App = () => {
                 key={index}
                 showCheckDialog={showCheckDialog}
                 showEditDialog={showEditDialog}
-                completeState={changeCompletedItem}
+                completeState={changeCompletedState}
+                removeTodoItem={removeTodoItem}
               />
             )
           })

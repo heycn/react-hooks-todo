@@ -2,7 +2,7 @@ import React from 'react'
 import './style.scss'
 
 const TodoItem = props => {
-  const { data, showCheckDialog, showEditDialog, completeState } = props
+  const { data, showCheckDialog, showEditDialog, completeState, removeTodoItem } = props
 
   return (
     <li className='todo-item'>
@@ -17,13 +17,9 @@ const TodoItem = props => {
         {data.content}
       </span>
       <div className='button-group'>
-        <button className='button button-danger'>删除</button>
-        <button className='button button-warning' onClick={() => showEditDialog(data.id)}>
-          编辑
-        </button>
-        <button className='button button-primary' onClick={() => showCheckDialog(data.id)}>
-          查看
-        </button>
+        <button className='button button-danger' onClick={() => removeTodoItem(data.id)}>删除</button>
+        <button className='button button-warning' onClick={() => showEditDialog(data.id)}>编辑</button>
+        <button className='button button-primary' onClick={() => showCheckDialog(data.id)}>查看</button>
       </div>
     </li>
   )
