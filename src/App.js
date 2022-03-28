@@ -48,6 +48,18 @@ const App = () => {
     setEditDialogVisible(true)
   }, [todoList])
 
+  const submitEdit = useCallback((newData, id) => {
+    setTodoList(todoList => 
+      todoList.map(item => {
+        if (item.id === id) {
+          item = newData
+        }
+        return item
+      })
+    )
+    setEditDialogVisible(false)
+  }, [])
+
   return (
     <div className='App'>
       <CheckDialog
@@ -58,6 +70,7 @@ const App = () => {
       <EditDialog
         editDialogVisible={editDialogVisible}
         data={currentData}
+        submitEdit={submitEdit}  
       />
       <TopBar addTodoSwitch={addTodoSwitch} />
       <AddTodo addTodoVisible={addTodoVisible} addListItem={addListItem} />
