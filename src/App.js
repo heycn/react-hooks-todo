@@ -9,9 +9,10 @@ import EditDialog from './component/Dialog/EditDialog/EditDialog'
 const App = () => {
   const [addTodoVisible, setAddTodoVisible] = useState(false),
         [checkDialogVisible, setCheckDialogVisible] = useState(false),
-        [editDialogVisible, setEditDialogVisible] = useState(true),
+        [editDialogVisible, setEditDialogVisible] = useState(false),
         [todoList, setTodoList] = useState([]),
         [currentData, setCurrentData] = useState({})
+
   useEffect(() => {
     const todoData = JSON.parse(localStorage.getItem('todoData') || '[]')
     setTodoList(todoData)
@@ -33,7 +34,9 @@ const App = () => {
     setAddTodoVisible(false)
   }, [])
 
-  const closeDialog = () => setCheckDialogVisible(false)
+  const _setCurrentData = (todoList, id) => {
+    setCurrentData(() => todoList.filter(item => item.id === id)[0])
+  }
 
   const showCheckDialog = useCallback(id => {
     _setCurrentData(todoList, id)
@@ -45,16 +48,12 @@ const App = () => {
     setCheckDialogVisible(true)
   }, [todoList])
 
-  const _setCurrentData = (todoList, id)=> {
-    setCurrentData(() => todoList.filter(item => item.id === id)[0])
-  }
-
   return (
     <div className='App'>
       <CheckDialog
         checkDialogVisible={checkDialogVisible}
         data={currentData}
-        closeDialog={closeDialog}
+        closeDialog={() => setCheckDialogVisible(false)}
       />
       <EditDialog>
         editDialogVisible={editDialogVisible}
