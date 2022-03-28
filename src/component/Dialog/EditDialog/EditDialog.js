@@ -18,7 +18,7 @@ const EditDialog = props => {
 
     const newData = {
       id: new Date().getTime(),
-      content: newValue ,
+      content: newValue,
       completed: checkRef.current.checked
     }
 
@@ -26,17 +26,14 @@ const EditDialog = props => {
   }
 
   return (
-    <Dialog
-      dialogVisible={editDialogVisible}
-      dialogTitle='编辑待办'
-    >
+    <Dialog dialogVisible={editDialogVisible} dialogTitle='编辑待办' >
       <p className='dialog-content'>时间：{data.id}</p>
       <p className='dialog-content'>
         <textarea
           className='text-area'
           ref={inputRef}
           defaultValue={data.content}
-        ></textarea>
+        />
       </p>
       <p className='dialog-content'>
         状态：
@@ -46,10 +43,7 @@ const EditDialog = props => {
           ref={checkRef} 
         />
       </p>
-      <button
-        className='button button-primary confirm-button'
-        onClick={submitNewData}
-      >
+      <button className='button button-primary confirm-button' onClick={submitNewData}>
         完成
       </button>
     </Dialog>
