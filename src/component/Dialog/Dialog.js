@@ -2,7 +2,7 @@ import React from 'react'
 import './style.scss'
 
 const Dialog = props => {
-  const { dialogVisible, dialogTitle, dialogContent } = props
+  const { dialogVisible, dialogTitle, children } = props
 
   return (
     <>
@@ -12,7 +12,7 @@ const Dialog = props => {
               <div className='dialog-wrapper'>
                 <div className='dialog'>
                   <div className='dialog-header'>{dialogTitle}</div>
-                  <div className='content-wrapper'>{dialogContent}</div>
+                  <div className='content-wrapper'>{children}</div>
                 </div>
               </div>
             )
